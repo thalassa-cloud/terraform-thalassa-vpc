@@ -6,7 +6,7 @@ resource "thalassa_subnet" "public" {
   vpc_id          = thalassa_vpc.this.id
   cidr            = each.value.cidr
   labels          = merge(var.labels, each.value.labels, { "component" : "subnet", "subnet" : each.key, "type" : "public" })
-#   route_table_id  = thalassa_route_table.public[each.key].id
+  route_table_id  = thalassa_route_table.public[each.key].id
 }
 
 resource "thalassa_route_table" "public" {
@@ -26,7 +26,7 @@ resource "thalassa_subnet" "private" {
   vpc_id          = thalassa_vpc.this.id
   cidr            = each.value.cidr
   labels          = merge(var.labels, each.value.labels, { "component" : "subnet", "subnet" : each.key, "type" : "private" })
-#   route_table_id  = thalassa_route_table.private[each.key].id
+  route_table_id  = thalassa_route_table.private[each.key].id
 }
 
 resource "thalassa_route_table" "private" {
