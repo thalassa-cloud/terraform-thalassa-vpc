@@ -1,9 +1,7 @@
 <!-- BEGIN_TF_DOCS -->
 ## Requirements
 
-| Name | Version |
-|------|---------|
-| <a name="requirement_thalassa"></a> [thalassa](#requirement\_thalassa) | >= 0.3 |
+No requirements.
 
 ## Providers
 
