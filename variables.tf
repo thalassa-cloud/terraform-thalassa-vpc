@@ -24,12 +24,6 @@ variable "region" {
   default     = "nl-01"
 }
 
-variable "zones" {
-  description = "The zones to create the VPC resources in"
-  type        = list(string)
-  default     = ["nl-01a", "nl-01b", "nl-01c"]
-}
-
 variable "public_subnets" {
   description = "The public subnets to create in the VPC. Public Subnets have access to the internet through a NAT Gateway."
   type = map(object({

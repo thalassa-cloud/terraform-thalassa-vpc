@@ -7,9 +7,8 @@ resource "thalassa_natgateway" "this" {
   labels          = merge(var.labels, each.value.labels, { "component" : "natgateway", "subnet" : each.key })
 }
 
-
 resource "thalassa_route_table_route" "public_default_route_via_natgw" {
-  for_each        = var.enable_nat_gateway ? thalassa_subnet.public : {}
+  for_each = var.enable_nat_gateway ? thalassa_subnet.public : {}
 
   route_table_id   = thalassa_route_table.public[each.key].id
   destination_cidr = "0.0.0.0/0"
