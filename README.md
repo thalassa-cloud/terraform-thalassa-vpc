@@ -58,13 +58,13 @@ module "vpc" {
 
 The following requirements are needed by this module:
 
-- <a name="requirement_thalassa"></a> [thalassa](#requirement\_thalassa) (>= 0.5)
+- <a name="requirement_thalassa"></a> [thalassa](#requirement\_thalassa) (>= 0.6)
 
 ## Providers
 
 The following providers are used by this module:
 
-- <a name="provider_thalassa"></a> [thalassa](#provider\_thalassa) (0.5.1)
+- <a name="provider_thalassa"></a> [thalassa](#provider\_thalassa) (0.6.0)
 
 ## Modules
 
