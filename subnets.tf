@@ -37,5 +37,3 @@ resource "thalassa_route_table" "private" {
   vpc_id          = thalassa_vpc.this.id
   labels          = merge(var.labels, each.value.labels, { "component" : "route_table", "subnet" : each.key, "type" : "private" })
 }
-
-

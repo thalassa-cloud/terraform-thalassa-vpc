@@ -8,7 +8,8 @@ resource "thalassa_natgateway" "this" {
 }
 
 resource "thalassa_route_table_route" "public_default_route_via_natgw" {
-  for_each = var.enable_nat_gateway ? thalassa_subnet.public : {}
+  for_each        = var.enable_nat_gateway ? thalassa_subnet.public : {}
+  organisation_id = var.organisation_id
 
   route_table_id   = thalassa_route_table.public[each.key].id
   destination_cidr = "0.0.0.0/0"
