@@ -1,13 +1,13 @@
 # Terraform Module for Thalassa Cloud VPC
 
-This Terraform module creates a VPC (Virtual Private Cloud) infrastructure in Thalassa Cloud with support for public and private subnets, NAT Gateway, and route tables. It provides a flexible and secure networking foundation for your cloud resources.
+This Terraform module creates a VPC (Virtual Private Cloud) infrastructure in Thalassa Cloud with support for public and private (no internet access) subnets, NAT Gateway, and route tables. It provides a flexible networking foundation for your cloud resources.
 
 ## Features
 
 - Create a VPC with customizable CIDR blocks
-- Deploy public and private subnets with stretched network architecture
-- Optional NAT Gateway deployment for private subnet internet access
-- Configurable route tables for public and private subnets
+- Deploy subnets with stretched network architecture
+- Optional NAT Gateway deployment
+- Configurable route tables for subnets
 - Support for custom labels and descriptions
 
 ## Usage
