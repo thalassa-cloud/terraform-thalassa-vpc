@@ -14,7 +14,7 @@ This Terraform module creates a VPC (Virtual Private Cloud) infrastructure in Th
 
 ```hcl
 module "vpc" {
-  source = "github.com/thalassa-cloud/terraform-thalassa-vpc"
+  source = "thalassa-cloud/vpc/thalassa"
 
   name             = "my-vpc"
   description      = "Production VPC for my application"
