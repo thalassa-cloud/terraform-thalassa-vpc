@@ -62,3 +62,9 @@ variable "enable_nat_gateway" {
   type        = bool
   default     = false
 }
+
+variable "nat_gateway_security_group_attachments" {
+  description = "The security group IDs to attach to the NAT Gateway"
+  type        = list(string)
+  default     = []
+}
