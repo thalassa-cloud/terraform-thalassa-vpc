@@ -63,8 +63,96 @@ variable "enable_nat_gateway" {
   default     = false
 }
 
-variable "nat_gateway_security_group_attachments" {
-  description = "The security group IDs to attach to the NAT Gateway"
-  type        = list(string)
-  default     = []
+variable "nat_gateway_security_group_name" {
+  description = "Name for the NAT Gateway security group. If not provided, defaults to '{var.name}-nat-gateway'"
+  type        = string
+  default     = null
+}
+
+variable "nat_gateway_security_group_description" {
+  description = "Description for the NAT Gateway security group. If not provided, defaults to 'Security group for NAT Gateway in {var.name}'"
+  type        = string
+  default     = null
+}
+
+variable "nat_gateway_security_group_labels" {
+  description = "Additional labels to apply to the NAT Gateway security group"
+  type        = map(string)
+  default     = {}
+}
+
+variable "nat_gateway_security_group_allow_same_group_traffic" {
+  description = "Whether to allow traffic from other resources in the same security group"
+  type        = bool
+  default     = false
+}
+
+variable "nat_gateway_security_group_ingress_rules" {
+  description = "List of ingress rules for the NAT Gateway security group"
+  type = list(object({
+    name                           = string
+    ip_version                     = optional(string, "ipv4")
+    protocol                       = string
+    priority                       = number
+    remote_type                    = string
+    remote_address                 = optional(string)
+    remote_security_group_identity = optional(string)
+    port_range_min                 = optional(number)
+    port_range_max                 = optional(number)
+    policy                         = optional(string, "allow")
+  }))
+  default = []
+}
+
+variable "nat_gateway_security_group_egress_rules" {
+  description = "List of egress rules for the NAT Gateway security group. Defaults to allowing all outbound traffic."
+  type = list(object({
+    name                           = string
+    ip_version                     = optional(string, "ipv4")
+    protocol                       = string
+    priority                       = number
+    remote_type                    = string
+    remote_address                 = optional(string)
+    remote_security_group_identity = optional(string)
+    port_range_min                 = optional(number)
+    port_range_max                 = optional(number)
+    policy                         = optional(string, "allow")
+  }))
+  default = [
+    {
+      name           = "allow-all-outbound"
+      ip_version     = "ipv4"
+      protocol       = "all"
+      priority       = 100
+      remote_type    = "address"
+      remote_address = "0.0.0.0/0"
+      port_range_min = null
+      port_range_max = null
+      policy         = "allow"
+    }
+  ]
+}
+
+variable "create_vpc_to_nat_gateway_security_group" {
+  description = "Whether to create a security group that allows VPC resources to connect to the NAT Gateway"
+  type        = bool
+  default     = false
+}
+
+variable "vpc_to_nat_gateway_security_group_name" {
+  description = "Name for the VPC to NAT Gateway security group. If not provided, defaults to '{var.name}-vpc-to-nat-gateway'"
+  type        = string
+  default     = null
+}
+
+variable "vpc_to_nat_gateway_security_group_description" {
+  description = "Description for the VPC to NAT Gateway security group. If not provided, defaults to 'Security group for VPC resources to connect to NAT Gateway in {var.name}'"
+  type        = string
+  default     = null
+}
+
+variable "vpc_to_nat_gateway_security_group_labels" {
+  description = "Additional labels to apply to the VPC to NAT Gateway security group"
+  type        = map(string)
+  default     = {}
 }

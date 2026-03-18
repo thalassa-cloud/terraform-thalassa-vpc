@@ -108,3 +108,17 @@ output "nat_gateway_slugs" {
     for k, v in thalassa_natgateway.this : k => v.slug
   } : {}
 }
+
+# =============================================================================
+# Security Group Outputs
+# =============================================================================
+
+output "nat_gateway_security_group_id" {
+  description = "The ID of the NAT Gateway security group"
+  value       = var.enable_nat_gateway ? thalassa_security_group.nat_gateway[0].id : null
+}
+
+output "vpc_to_nat_gateway_security_group_id" {
+  description = "The ID of the VPC to NAT Gateway security group"
+  value       = var.enable_nat_gateway && var.create_vpc_to_nat_gateway_security_group ? thalassa_security_group.vpc_to_nat_gateway[0].id : null
+}
