@@ -4,6 +4,7 @@ resource "thalassa_natgateway" "this" {
   description     = each.value.description
   organisation_id = var.organisation_id
   subnet_id       = each.value.id
+  reserved_ip_id  = each.value.reserved_ip_id
   labels          = merge(var.labels, each.value.labels, { "component" : "natgateway", "subnet" : each.key })
 }
 

@@ -31,6 +31,7 @@ variable "public_subnets" {
     description        = optional(string)
     enable_nat_gateway = optional(bool)
     labels             = optional(map(string))
+    reserved_ip_id     = optional(string)
   }))
   default = {}
 }
