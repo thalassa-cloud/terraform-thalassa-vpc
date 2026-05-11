@@ -64,7 +64,7 @@ variable "enable_nat_gateway" {
   default     = false
 }
 
-variable "reserved_ip_id" {
+variable "nat_gateway_reserved_ip_id" {
   description = "The ID of the reserved IP to use for the NAT Gateway"
   type        = string
   default     = null
