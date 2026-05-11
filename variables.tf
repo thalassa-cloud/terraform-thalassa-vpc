@@ -63,3 +63,9 @@ variable "enable_nat_gateway" {
   type        = bool
   default     = false
 }
+
+variable "reserved_ip_id" {
+  description = "The ID of the reserved IP to use for the NAT Gateway"
+  type        = string
+  default     = null
+}
